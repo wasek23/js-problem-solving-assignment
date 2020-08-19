@@ -1,7 +1,7 @@
 // Feet to Mile Converter ##############################
 const feetToMile = feet => {
     if (feet < 0) {
-        console.log("Feet count/number can't be a negative number");
+        console.log("Feet length can't be a negative number");
     }
     else if (typeof feet === 'number') {
         document.getElementById("output_mile").innerHTML = feet / 5280;
@@ -9,7 +9,7 @@ const feetToMile = feet => {
         return feet / 5280; // 1 mile = 5280 feet
     }
     else {
-        console.log("Feet should be a valid number");
+        console.log("Feet length should be a valid number");
     }
 }
 // console.log(feetToMile(1.6546));

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Developed by Wasek Bellah -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Problem Solving Assignment</title>
+
+    <style>
+        body {
+            font-size: 18px;
+        }
+
+        .container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            height: 100vh;
+        }
+
+        h2 {
+            margin: 20px 0 5px 0;
+        }
+
+        .flex {
+            display: flex;
+            align-items: center;
+        }
+
+        label {
+            margin-right: 20px;
+        }
+
+        input {
+            width: 130px;
+            padding: 3px 10px;
+        }
+
+        input#input_names {
+            width: 450px;
+        }
+
+        .output {
+            margin-left: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2>Feet to Mile</h2>
+        <div class="flex">
+            <label for="input_feet"><strong>Feet:</strong>
+                <input type="number" id="input_feet" min="0" placeholder="Enter feet to convert" />
+            </label>
+
+            <p class="output"><strong>In Mile: </strong> <span id="output_mile">0</span> mile</p>
+        </div> <!-- Feet to Mile -->
+
+        <br />
+
+        <h2>Wood Calculator</h2>
+        <div class="flex">
+            <label for="input_chair"><strong>Chair:</strong>
+                <input type="number" id="input_chair" value="0" min="0" />
+            </label>
+
+            <label for="input_table"><strong>Table:</strong>
+                <input type="number" id="input_table" value="0" min="0" />
+            </label>
+
+            <label for="input_bed"><strong>Bed:</strong>
+                <input type="number" id="input_bed" value="0" min="0" />
+            </label>
+
+            <p class="output"><strong>Total Wood: </strong> <span id="output_wood">0</span> cft</p>
+        </div> <!-- Wood Calculator -->
+
+        <br />
+
+        <h2>Brick Calculator</h2>
+        <div class="flex">
+            <label for="input_floor"><strong>Floor:</strong>
+                <input type="number" id="input_floor" min="0" placeholder="Enter total floor" />
+            </label>
+
+            <p class="output"><strong>Total Bricks: </strong> <span id="output_brick">0</span> bricks</p>
+        </div> <!-- Brick Calculator -->
+
+        <br />
+
+        <h2>Tiny Friend Finder</h2>
+        <div class="flex">
+            <label for="input_names"><strong>Friend Names:</strong>
+                <input type="text" id="input_names" placeholder="Enter Names separate with 'coma and space(, )'" />
+            </label>
+
+            <p class="output"><strong>Tiny Friend Name: </strong> <span id="output_tiny"></span></p>
+        </div> <!-- Tiny Friend Finder -->
+    </div> <!-- Container -->
+
+    <script src="assignment.js"></script>
+    <script>
+        // Feet to Mile
+        const input_feet = document.getElementById('input_feet');
+        input_feet.oninput = () => feetToMile(parseFloat(input_feet.value));
+
+
+        // Wood Calculator
+        const input_chair = document.getElementById('input_chair');
+        const input_table = document.getElementById('input_table');
+        const input_bed = document.getElementById('input_bed');
+
+        input_chair.oninput = () => woodCalculator(parseFloat(input_chair.value), parseFloat(input_table.value), parseFloat(input_bed.value));
+
+        input_table.oninput = () => woodCalculator(parseFloat(input_chair.value), parseFloat(input_table.value), parseFloat(input_bed.value));
+
+        input_bed.oninput = () => woodCalculator(parseFloat(input_chair.value), parseFloat(input_table.value), parseFloat(input_bed.value));
+
+
+        // Brick Calculator
+        const input_floor = document.getElementById('input_floor');
+        input_floor.oninput = () => brickCalculator(parseFloat(input_floor.value));
+
+
+        // Tiny Friend Finder
+        const input_names = document.getElementById('input_names');
+        input_names.oninput = () => tinyFriend(input_names.value.trim().split(", "));
+    </script>
+</body>
+
+</html>
